@@ -1,262 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Barry's Game & Media Hub</title>
+<meta charset="UTF-8">
+<title>Barry Hub</title>
 <style>
-  :root{
-    --bg:#0f1724; --panel:#111827; --muted:#9ca3af; --btn:#3b82f6; --card:#1f2937;
-  }
-  html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;background:linear-gradient(180deg,var(--bg),#071026);color:#e6eef8}
-  header{padding:14px 18px;border-bottom:1px solid rgba(255,255,255,0.03);display:flex;align-items:center;gap:12px}
-  header h1{font-size:1.15rem;margin:0}
-  .wrap{max-width:1100px;margin:18px auto;padding:0 18px}
-  .layout{display:grid;grid-template-columns:260px 1fr 300px;gap:16px;align-items:start}
-  .panel{background:var(--panel);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
-  nav .nav-item{padding:8px;border-radius:8px;color:var(--muted);cursor:pointer}
-  nav .nav-item:hover{background:rgba(255,255,255,0.02);color:#fff}
-  .center{display:flex;flex-direction:column;gap:12px;align-items:center}
-  .cookie{width:200px;height:200px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ffd27a,#c47a2b);box-shadow:0 12px 40px rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .08s}
-  .cookie:active{transform:scale(.96)}
-  .count{font-weight:700;margin-top:8px;font-size:1.1rem;color:#fff}
-  .controls{display:flex;gap:8px;margin-top:8px}
-  button{background:var(--btn);border:none;color:#fff;padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:600}
-  button.secondary{background:#374151}
-  .embed-area{width:100%;height:420px;background:var(--card);border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:8px}
-  .tabs{display:flex;gap:8px}
-  .tab-btn{background:#0b1220;color:var(--muted);padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.02);cursor:pointer}
-  .tab-btn.active{background:#172033;color:#fff}
-  .iframe-wrap{flex:1;position:relative;border-radius:6px;overflow:hidden;background:#000}
-  iframe{width:100%;height:100%;border:0;display:block}
-  .fallback{padding:8px;color:var(--muted);font-size:0.95rem}
-  .games-list ul{list-style:none;padding:0;margin:0}
-  .games-list li{margin:8px 0}
-  a.link{color:#93c5fd;text-decoration:none}
-  a.link:hover{text-decoration:underline}
-  @media (max-width:980px){
-    .layout{grid-template-columns:1fr}
-    .cookie{width:160px;height:160px}
-    .embed-area{height:320px}
-  }
+  body { background:#0f172a; color:white; font-family:Arial; margin:0; }
+  .tabs { display:flex; background:#1e293b; padding:10px; gap:10px; }
+  .tab { padding:8px 12px; background:#334155; border-radius:6px; cursor:pointer; }
+  .tab.active { background:#475569; }
+  iframe { width:100%; height:90vh; border:none; display:none; }
+  #fallback { padding:20px; display:none; }
 </style>
 </head>
 <body>
-<header>
-  <div style="width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,#f97316,#f59e0b);display:flex;align-items:center;justify-content:center;font-weight:800;color:#081124">B</div>
-  <h1>Barry's Game & Media Hub</h1>
-  <div style="margin-left:auto;color:var(--muted)">Hosted on GitHub Pages</div>
-</header>
 
-<div class="wrap">
-  <div class="layout">
+<div class="tabs">
+  <div class="tab active" data-target="cookie">Cookie Clicker</div>
+  <div class="tab" data-target="duck">DuckDuckGo</div>
+  <div class="tab" data-target="bing">Bing</div>
+  <div class="tab" data-target="yt">YouTube</div>
+  <div class="tab" data-target="tt">TikTok</div>
+</div>
 
-    <!-- Left: quick links / proxies -->
-    <aside class="panel" aria-label="Quick links">
-      <h3 style="margin-top:0">Quick Links</h3>
-      <div style="margin-top:8px">
-        <strong style="color:var(--muted)">Proxies</strong>
-        <p style="color:var(--muted);margin:6px 0 8px 0;font-size:0.95rem">Open these in a new tab if embedding is blocked.</p>
-        <div class="games-list">
-          <ul>
-            <li><a class="link" href="https://hide.me/en/proxy" target="_blank" rel="noopener">hide.me Web Proxy</a></li>
-            <li><a class="link" href="https://www.proxysite.com/" target="_blank" rel="noopener">ProxySite</a></li>
-            <li><a class="link" href="https://kproxy.com/" target="_blank" rel="noopener">KProxy</a></li>
-            <li><a class="link" href="https://www.hidester.com/proxy/" target="_blank" rel="noopener">Hidester</a></li>
-          </ul>
-        </div>
-      </div>
+<!-- Real Cookie Clicker -->
+<iframe id="cookie" src="https://orteil.dashnet.org/cookieclicker/"></iframe>
 
-      <hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0">
+<!-- DuckDuckGo -->
+<iframe id="duck" src="https://duckduckgo.com" ></iframe>
 
-      <div>
-        <strong style="color:var(--muted)">External Media</strong>
-        <p style="color:var(--muted);margin:6px 0 8px 0;font-size:0.95rem">Open official sites in new tabs.</p>
-        <div class="games-list">
-          <ul>
-            <li><a class="link" href="https://www.youtube.com" target="_blank" rel="noopener">YouTube</a></li>
-            <li><a class="link" href="https://www.tiktok.com" target="_blank" rel="noopener">TikTok</a></li>
-            <li><a class="link" href="https://duckduckgo.com" target="_blank" rel="noopener">DuckDuckGo</a></li>
-          </ul>
-        </div>
-      </div>
-    </aside>
+<!-- Bing (your long redirect link) -->
+<iframe id="bing" src="https://www.bing.com/ck/a?!&&p=953176f1c64bb0947511d3989b3153e1ce9ae6563b3ce512d5d218b007c6fa10JmltdHM9MTc5MDgxMjgwMA&ptn=3&ver=2&hsh=4&fclid=0b4143c7-9479-6c61-245f-54b7951c6d0a&psq=duck+duck+go&u=a1aHR0cHM6Ly9kdWNrZHVja2dvLmNvbS8"></iframe>
 
-    <!-- Center: main games and embeds -->
-    <main class="center">
-      <section class="panel" style="width:100%;max-width:760px">
-        <h2 style="margin:0 0 8px 0">Embedded Tabs (keeps URL unchanged)</h2>
+<!-- YouTube -->
+<iframe id="yt" src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
 
-        <div class="embed-area" id="embedArea">
-          <div class="tabs" role="tablist" aria-label="Embed tabs">
-            <button class="tab-btn active" data-target="yt" id="tab-yt">YouTube</button>
-            <button class="tab-btn" data-target="tt" id="tab-tt">TikTok</button>
-            <button class="tab-btn" data-target="bing" id="tab-bing">Bing / DuckDuckGo</button>
-          </div>
-
-          <div class="iframe-wrap" id="iframes">
-            <!-- YouTube iframe (works reliably) -->
-            <iframe id="iframe-yt" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
-
-            <!-- TikTok iframe (may be blocked by TikTok) -->
-            <iframe id="iframe-tt" src="https://www.tiktok.com/" title="TikTok" style="display:none" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
-
-            <!-- Bing redirect iframe (the long URL you provided) -->
-            <iframe id="iframe-bing" src="https://www.bing.com/ck/a?!&&p=953176f1c64bb0947511d3989b3153e1ce9ae6563b3ce512d5d218b007c6fa10JmltdHM9MTc5MDgxMjgwMA&ptn=3&ver=2&hsh=4&fclid=0b4143c7-9479-6c61-245f-54b7951c6d0a&psq=duck+duck+go&u=a1aHR0cHM6Ly9kdWNrZHVja2dvLmNvbS8" title="BingRedirect" style="display:none" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
-          </div>
-
-          <div class="fallback" id="fallback">
-            <span id="fallbackText">If an embed is blocked, open the site in a new tab:</span>
-            <div style="margin-top:6px">
-              <a class="link" id="fallbackLink" href="https://www.tiktok.com" target="_blank" rel="noopener">Open TikTok in new tab</a>
-            </div>
-          </div>
-        </div>
-
-        <p style="color:var(--muted);margin-top:10px">Switch tabs above to view content inside this page. The page URL will not change when you switch tabs.</p>
-      </section>
-
-      <section class="panel" style="width:100%;max-width:760px">
-        <h2 style="margin:0 0 8px 0">Cookie Clicker — Mini</h2>
-        <div id="cookie" class="cookie" title="Click me"></div>
-        <div class="count">Cookies: <span id="cookieCount">0</span></div>
-        <div class="controls">
-          <button id="resetBtn" class="secondary">Reset</button>
-          <button id="autoBtn">Buy Auto (cost: <span id="autoCost">50</span>)</button>
-          <button id="saveBtn">Save</button>
-        </div>
-      </section>
-    </main>
-
-    <!-- Right: quick launch -->
-    <aside class="panel" style="height:100%;display:flex;flex-direction:column;gap:12px">
-      <div>
-        <h3 style="margin:0 0 8px 0">Quick Launch</h3>
-        <div class="embed">
-          <button style="width:100%;margin-bottom:8px" onclick="openInNew('https://orteil.dashnet.org/cookieclicker/')">Open Cookie Clicker</button>
-          <button style="width:100%;margin-bottom:8px" onclick="openInNew('https://play.duckmath.games')">Open DuckMath</button>
-          <button style="width:100%" onclick="openInNew('https://www.tiktok.com')">Open TikTok</button>
-        </div>
-      </div>
-    </aside>
-
-  </div>
-
-  <footer style="margin-top:18px;text-align:center;color:var(--muted)">Made by Barry · Embeds may be blocked by the target site; use fallback links.</footer>
+<!-- TikTok (blocked) -->
+<div id="fallback">
+  <h2>TikTok cannot load inside this site</h2>
+  <p>TikTok blocks embedding. Click below to open it in a new tab:</p>
+  <a href="https://www.tiktok.com" target="_blank" style="color:#93c5fd;">Open TikTok</a>
 </div>
 
 <script>
-  // Tab switching (keeps URL unchanged)
-  const tabs = document.querySelectorAll('.tab-btn');
-  const iframeYt = document.getElementById('iframe-yt');
-  const iframeTt = document.getElementById('iframe-tt');
-  const iframeBing = document.getElementById('iframe-bing');
-  const fallbackLink = document.getElementById('fallbackLink');
-  const fallbackText = document.getElementById('fallbackText');
+const tabs = document.querySelectorAll('.tab');
+const frames = {
+  cookie: document.getElementById('cookie'),
+  duck: document.getElementById('duck'),
+  bing: document.getElementById('bing'),
+  yt: document.getElementById('yt'),
+  tt: document.getElementById('fallback')
+};
 
-  function setActiveTab(target) {
-    tabs.forEach(t => t.classList.toggle('active', t.dataset.target === target));
-    iframeYt.style.display = (target === 'yt') ? 'block' : 'none';
-    iframeTt.style.display = (target === 'tt') ? 'block' : 'none';
-    iframeBing.style.display = (target === 'bing') ? 'block' : 'none';
-
-    // Update fallback link and message per tab
-    if (target === 'yt') {
-      fallbackLink.href = 'https://www.youtube.com';
-      fallbackText.textContent = 'If YouTube embed is blocked, open YouTube in a new tab:';
-    } else if (target === 'tt') {
-      fallbackLink.href = 'https://www.tiktok.com';
-      fallbackText.textContent = 'If TikTok embed is blocked, open TikTok in a new tab:';
-    } else if (target === 'bing') {
-      // Use the long Bing redirect URL you provided as the fallback
-      fallbackLink.href = 'https://www.bing.com/ck/a?!&&p=953176f1c64bb0947511d3989b3153e1ce9ae6563b3ce512d5d218b007c6fa10JmltdHM9MTc5MDgxMjgwMA&ptn=3&ver=2&hsh=4&fclid=0b4143c7-9479-6c61-245f-54b7951c6d0a&psq=duck+duck+go&u=a1aHR0cHM6Ly9kdWNrZHVja2dvLmNvbS8';
-      fallbackText.textContent = 'If the Bing redirect embed is blocked, open the DuckDuckGo redirect in a new tab:';
-    }
-  }
-
-  tabs.forEach(btn => btn.addEventListener('click', () => setActiveTab(btn.dataset.target)));
-
-  // Initial tab
-  setActiveTab('yt');
-
-  // Simple attempt to detect blocked iframe: if iframe remains blank after a short delay, show a visible hint.
-  // Note: cross-origin prevents reliable access to iframe contents; this is a best-effort visual hint only.
-  function checkIframeLoad(iframe, hintText) {
-    // If iframe fails to load visually, user can use fallback link.
-    // We cannot reliably detect X-Frame-Options via JS due to cross-origin restrictions.
-    // So we only show the fallback link (already present) and do not attempt to bypass protections.
-    // This function is intentionally minimal and safe.
-  }
-
-  // Cookie clicker logic (same as before)
-  let cookies = 0;
-  let autos = 0;
-  let autoCost = 50;
-  const cookieEl = document.getElementById('cookie');
-  const countEl = document.getElementById('cookieCount');
-  const autoCostEl = document.getElementById('autoCost');
-  const resetBtn = document.getElementById('resetBtn');
-  const autoBtn = document.getElementById('autoBtn');
-  const saveBtn = document.getElementById('saveBtn');
-
-  function render() {
-    countEl.textContent = cookies;
-    autoCostEl.textContent = autoCost;
-    autoBtn.textContent = `Buy Auto (cost: ${autoCost})`;
-  }
-
-  cookieEl.addEventListener('click', () => {
-    cookies += 1 + autos;
-    render();
+function showTab(name){
+  tabs.forEach(t => t.classList.toggle('active', t.dataset.target === name));
+  Object.keys(frames).forEach(key => {
+    frames[key].style.display = (key === name) ? 'block' : 'none';
   });
+}
 
-  resetBtn.addEventListener('click', () => {
-    if (!confirm('Reset your progress?')) return;
-    cookies = 0; autos = 0; autoCost = 50;
-    save();
-    render();
-  });
+tabs.forEach(t => {
+  t.onclick = () => showTab(t.dataset.target);
+});
 
-  autoBtn.addEventListener('click', () => {
-    if (cookies >= autoCost) {
-      cookies -= autoCost;
-      autos += 1;
-      autoCost = Math.ceil(autoCost * 1.8);
-      render();
-      save();
-    } else {
-      alert('Not enough cookies for an Auto.');
-    }
-  });
-
-  setInterval(() => {
-    if (autos > 0) {
-      cookies += autos;
-      render();
-    }
-  }, 1000);
-
-  function save() {
-    try { localStorage.setItem('barry_hub_save', JSON.stringify({cookies, autos, autoCost})); } catch(e){}
-  }
-  saveBtn.addEventListener('click', () => { save(); alert('Saved locally'); });
-
-  // Load saved
-  try {
-    const saved = JSON.parse(localStorage.getItem('barry_hub_save') || '{}');
-    if (saved.cookies) cookies = saved.cookies;
-    if (saved.autos) autos = saved.autos;
-    if (saved.autoCost) autoCost = saved.autoCost;
-  } catch(e){}
-
-  render();
-
-  // Helper to open links in new tab
-  function openInNew(url){
-    window.open(url, '_blank', 'noopener');
-  }
+showTab('cookie');
 </script>
+
 </body>
 </html>
 
-  
