@@ -2,69 +2,51 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Barry Hub</title>
+<title>Barry Hub – DuckMath Launcher</title>
 <style>
   body { background:#0f172a; color:white; font-family:Arial; margin:0; }
-  .tabs { display:flex; background:#1e293b; padding:10px; gap:10px; }
-  .tab { padding:8px 12px; background:#334155; border-radius:6px; cursor:pointer; }
-  .tab.active { background:#475569; }
-  iframe { width:100%; height:90vh; border:none; display:none; }
-  #fallback { padding:20px; display:none; }
+  h1 { text-align:center; padding:20px; }
+  .grid { 
+    display:grid; 
+    grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); 
+    gap:16px; 
+    padding:20px; 
+  }
+  .card {
+    background:#1e293b;
+    padding:14px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,0.4);
+  }
+  .card a {
+    color:#93c5fd;
+    text-decoration:none;
+    font-weight:bold;
+  }
+  .card a:hover { text-decoration:underline; }
 </style>
 </head>
 <body>
 
-<div class="tabs">
-  <div class="tab active" data-target="cookie">Cookie Clicker</div>
-  <div class="tab" data-target="duck">DuckDuckGo</div>
-  <div class="tab" data-target="bing">Bing</div>
-  <div class="tab" data-target="yt">YouTube</div>
-  <div class="tab" data-target="tt">TikTok</div>
+<h1>DuckMath Game Launcher</h1>
+
+<div class="grid">
+
+  <div class="card"><a href="https://duckmath.app" target="_blank">DuckMath Poop Clicker</a></div>
+  <div class="card"><a href="https://duckmath.app" target="_blank">Car Stunt King</a></div>
+  <div class="card"><a href="https://duckmath.app" target="_blank">Yeti Sensation</a></div>
+
+  <div class="card"><a href="https://www.coolmathgames.com" target="_blank">Math Duck (CoolMath)</a></div>
+  <div class="card"><a href="https://www.timestables.com/multiplication-duck.html" target="_blank">Multiplication Duck</a></div>
+
+  <div class="card"><a href="https://duckmath.org" target="_blank">DuckMath Unblocked – Full Library</a></div>
+
 </div>
 
-<!-- Real Cookie Clicker -->
-<iframe id="cookie" src="https://orteil.dashnet.org/cookieclicker/"></iframe>
-
-<!-- DuckDuckGo -->
-<iframe id="duck" src="https://duckduckgo.com" ></iframe>
-
-<!-- Bing (your long redirect link) -->
-<iframe id="bing" src="https://www.bing.com/ck/a?!&&p=953176f1c64bb0947511d3989b3153e1ce9ae6563b3ce512d5d218b007c6fa10JmltdHM9MTc5MDgxMjgwMA&ptn=3&ver=2&hsh=4&fclid=0b4143c7-9479-6c61-245f-54b7951c6d0a&psq=duck+duck+go&u=a1aHR0cHM6Ly9kdWNrZHVja2dvLmNvbS8"></iframe>
-
-<!-- YouTube -->
-<iframe id="yt" src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
-
-<!-- TikTok (blocked) -->
-<div id="fallback">
-  <h2>TikTok cannot load inside this site</h2>
-  <p>TikTok blocks embedding. Click below to open it in a new tab:</p>
-  <a href="https://www.tiktok.com" target="_blank" style="color:#93c5fd;">Open TikTok</a>
-</div>
-
-<script>
-const tabs = document.querySelectorAll('.tab');
-const frames = {
-  cookie: document.getElementById('cookie'),
-  duck: document.getElementById('duck'),
-  bing: document.getElementById('bing'),
-  yt: document.getElementById('yt'),
-  tt: document.getElementById('fallback')
-};
-
-function showTab(name){
-  tabs.forEach(t => t.classList.toggle('active', t.dataset.target === name));
-  Object.keys(frames).forEach(key => {
-    frames[key].style.display = (key === name) ? 'block' : 'none';
-  });
-}
-
-tabs.forEach(t => {
-  t.onclick = () => showTab(t.dataset.target);
-});
-
-showTab('cookie');
-</script>
+<h1>Cookie Clicker</h1>
+<iframe src="https://orteil.dashnet.org/cookieclicker/" 
+        style="width:100%; height:90vh; border:none;"></iframe>
 
 </body>
 </html>
-
