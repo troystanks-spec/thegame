@@ -1,163 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Barry's Cookie Factory</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- DuckMath Games Section -->
+<div class="game">
+  <h2>DuckMath Games</h2>
+  <p>Play math and arcade games from DuckMath:</p>
 
-<style>
-  body {
-    background: #1a1e2e;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    overflow-x: hidden;
-  }
+  <ul style="text-align:left; max-width:300px; margin:0 auto;">
 
-  /* Top Bar */
-  #topbar {
-    background: #0d111c;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    font-size: 1.1rem;
-    border-bottom: 2px solid #2a2f45;
-  }
+    <li><a href="https://duckmath.app" target="_blank">Duckmath Poop Clicker</a></li>
+    <li><a href="https://duckmath.app" target="_blank">Car Stunt King</a></li>
+    <li><a href="https://duckmath.app" target="_blank">Yeti Sensation</a></li>
 
-  #topbar div {
-    cursor: pointer;
-    padding: 5px 10px;
-    border-radius: 6px;
-  }
+    <li><a href="https://www.coolmathgames.com" target="_blank">Math Duck (CoolMath Games)</a></li>
+    <li><a href="https://www.timestables.com/multiplication-duck.html" target="_blank">Multiplication Duck</a></li>
+    <li><a href="https://duckmath.org" target="_blank">DuckMath Unblocked Games (Hundreds of games)</a></li>
 
-  #topbar div:hover {
-    background: #2a2f45;
-  }
-
-  /* Main Layout */
-  #layout {
-    display: flex;
-    height: calc(100vh - 50px);
-  }
-
-  /* Left Store */
-  #store {
-    width: 25%;
-    background: #0f1422;
-    padding: 10px;
-    overflow-y: auto;
-    border-right: 2px solid #2a2f45;
-  }
-
-  .store-item {
-    background: #1f2437;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-
-  .store-item:hover {
-    background: #2c324a;
-  }
-
-  /* Center Cookie Area */
-  #center {
-    width: 50%;
-    text-align: center;
-    padding-top: 40px;
-  }
-
-  #bigCookie {
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, #d4a373, #8b5e34);
-    border-radius: 50%;
-    margin: 20px auto;
-    cursor: pointer;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  }
-
-  #bigCookie:active {
-    transform: scale(0.95);
-  }
-
-  #cookieCount {
-    font-size: 2rem;
-    margin-top: 10px;
-  }
-
-  /* Right Upgrades */
-  #upgrades {
-    width: 25%;
-    background: #0f1422;
-    padding: 10px;
-    overflow-y: auto;
-    border-left: 2px solid #2a2f45;
-  }
-
-  .upgrade {
-    background: #1f2437;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-
-  .upgrade:hover {
-    background: #2c324a;
-  }
-</style>
-</head>
-
-<body>
-
-<!-- Top Bar -->
-<div id="topbar">
-  <div>Options</div>
-  <div>Stats</div>
-  <div>Info</div>
-  <div>Legacy</div>
+  </ul>
 </div>
-
-<!-- Main Layout -->
-<div id="layout">
-
-  <!-- Store -->
-  <div id="store">
-    <h3>Store</h3>
-    <div class="store-item">Cursor – 15 cookies</div>
-    <div class="store-item">Grandma – 100 cookies</div>
-    <div class="store-item">Farm – 500 cookies</div>
-  </div>
-
-  <!-- Center Cookie -->
-  <div id="center">
-    <div id="bigCookie"></div>
-    <div id="cookieCount">0 cookies</div>
-  </div>
-
-  <!-- Upgrades -->
-  <div id="upgrades">
-    <h3>Upgrades</h3>
-    <div class="upgrade">Upgrade 1</div>
-    <div class="upgrade">Upgrade 2</div>
-  </div>
-
-</div>
-
-<script>
-  let cookies = 0;
-  const bigCookie = document.getElementById("bigCookie");
-  const cookieCount = document.getElementById("cookieCount");
-
-  bigCookie.onclick = () => {
-    cookies++;
-    cookieCount.textContent = cookies + " cookies";
-  };
-</script>
-
-</body>
-</html>
-
